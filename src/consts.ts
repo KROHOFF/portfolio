@@ -184,3 +184,18 @@ export const WORKS = [
     ],
   },
 ];
+
+export const PROJECTS = [
+  {
+    name: "TrackIoT",
+    srcImg: "../src/assets/projects/trackiot.png",
+  },
+  {
+    name: "RadareSoftware",
+    srcImg: "../src/assets/projects/radares.png",
+  },
+  {
+    name: "AST Website",
+    srcImg: "../src/assets/projects/ast.png",
+  },
+]
