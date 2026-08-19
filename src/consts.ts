@@ -188,14 +188,14 @@ export const WORKS = [
 export const PROJECTS = [
   {
     name: "TrackIoT",
-    srcImg: "../src/assets/projects/trackiot.png",
+    srcImg: "public/projects/trackiot.png",
   },
   {
     name: "RadareSoftware",
-    srcImg: "../src/assets/projects/radares.png",
+    srcImg: "public/projects/radares.png",
   },
   {
     name: "AST Website",
-    srcImg: "../src/assets/projects/ast.png",
+    srcImg: "public/projects/ast.png",
   },
 ]
