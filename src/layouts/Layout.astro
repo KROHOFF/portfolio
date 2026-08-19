@@ -1,23 +1,36 @@
+---
+import { SEO, CONFIG_SITE } from "@/consts";
+import "@/styles/global.css";
+import "@/styles/colorTailwind.css";
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="description" content={SEO.description} />
+    <meta name="keywords" content={SEO.keywords} />
+    <meta name="author" content={SEO.author} />
+    <meta property="og:title" content={SEO.siteName} />
+    <meta property="og:description" content={SEO.description} />
+    <meta property="og:image" content={SEO.image} />
+    <meta property="og:url" content={SEO.url} />
+    <meta name="theme-color" content={CONFIG_SITE.color} />
+    <title>{SEO.siteName}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>

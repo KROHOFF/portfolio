@@ -1,0 +1,18 @@
+---
+import Title from "./Title.astro";
+---
+
+<section class="w-full p-10" id="projects">
+  <div class="max-w-7xl mx-auto">
+    <Title title="Projects" />
+  </div>
+  <div class="max-w-7xl mx-auto grid grid-cols-2 gap-1">
+    {
+      Array(4)
+        .fill(null)
+        .map((_, i) => (
+          <article class="border border-card min-h-140 hover:border-accent" />
+        ))
+    }
+  </div>
+</section>

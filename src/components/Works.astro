@@ -1,0 +1,121 @@
+---
+import Title from "./Title.astro";
+import { WORKS } from "../consts";
+---
+
+<section class="w-full p-10" id="works">
+  <div class="max-w-7xl mx-auto">
+    <Title title="Works" />
+  </div>
+  <div class="max-w-7xl mx-auto flex flex-col gap-1">
+    {
+      WORKS.map((work) => (
+        <article class="work-item border-b border-card p-2 space-y-2 hover:border-accent w-full transition-all duration-200">
+          <div class="flex justify-between items-start w-full">
+            <span class="font-semibold">{work.name}</span>{" "}
+            <span class="text-xs text-secondary"> {work.timerMessage}</span>
+          </div>
+          <div class="ps-2">
+            <span class="text-sm font-mono">{work.description}</span>
+          </div>
+          <div class="flex items-center justify-start gap-5">
+            {work.projects.map((p) => (
+              <div
+                class="project-item text-secondary border-b px-2 cursor-pointer transition-all duration-200 hover:border-primary hover:text-white"
+                data-project-techs={JSON.stringify(p.technologies)}
+              >
+                <span class="text-xs">{p.name}</span>
+              </div>
+            ))}
+          </div>
+          <div class="flex flex-wrap gap-2 work-techs">
+            {Array.from(
+              new Set(work.projects.flatMap((p) => p.technologies)),
+            ).map((tech) => (
+              <div
+                class="text-secondary/30 px-2 py-1 text-xs cursor-pointer transition-all duration-500"
+                data-tech={tech}
+              >
+                {tech}
+              </div>
+            ))}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<script is:inline>
+  function initWorks() {
+    const works = document.querySelectorAll(".work-item");
+    const projectItems = document.querySelectorAll(".project-item");
+
+    function setWorksOpacity(activeWork) {
+      works.forEach((w) => {
+        if (!activeWork) {
+          w.classList.remove("opacity-100", "opacity-50");
+        } else if (w === activeWork) {
+          w.classList.add("opacity-100");
+          w.classList.remove("opacity-50");
+        } else {
+          w.classList.add("opacity-50");
+          w.classList.remove("opacity-100");
+        }
+      });
+    }
+
+    works.forEach((work) => {
+      work.addEventListener("mouseenter", () => {
+        setWorksOpacity(work);
+      });
+
+      work.addEventListener("mouseleave", () => {
+        setWorksOpacity(null);
+      });
+    });
+
+    projectItems.forEach((project) => {
+      const projectTechs = JSON.parse(
+        project.getAttribute("data-project-techs") || "[]",
+      );
+      const workArticle = project.closest(".work-item");
+      if (!workArticle) return;
+
+      const techBadges = workArticle.querySelectorAll("[data-tech]");
+
+      project.addEventListener("mouseenter", () => {
+        techBadges.forEach((badge) => {
+          const techName = badge.getAttribute("data-tech");
+
+          if (projectTechs.includes(techName)) {
+            badge.classList.add("text-white");
+            badge.classList.remove("text-secondary", "opacity-10");
+          } else {
+            badge.classList.add("opacity-50", "text-secondary");
+            badge.classList.remove("text-white");
+          }
+        });
+      });
+
+      project.addEventListener("mouseleave", () => {
+        techBadges.forEach((badge) => {
+          badge.classList.remove("text-white", "opacity-50");
+          badge.classList.add("text-secondary");
+        });
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".work-item")) {
+        setWorksOpacity(null);
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initWorks);
+  } else {
+    initWorks();
+  }
+</script>

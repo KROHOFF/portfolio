@@ -1,0 +1,50 @@
+---
+import { NAVIGATION } from "../consts";
+
+const currentPath = Astro.url.pathname;
+---
+
+<div class="relative flex justify-center items-center">
+  <div class="absolute left-[10%] top-[50%] -translate-y-1/2">
+    <span class="font-bold text-secondary tracking-[0.25rem]">
+      <span class="text-primary">C</span>LEHUE
+    </span>
+  </div>
+  <nav>
+    <ul class="flex justify-center items-center h-14 text-xs">
+      {
+        NAVIGATION.map((item) => (
+          <li class="relative py-3">
+            <a
+              href={item.path === currentPath ? "" : item.path}
+              class={`relative py-4.5 tracking-widest px-10 ${currentPath === item.path ? "text-primary bg-background border-r border-secondary/5 " : "border-transparent text-secondary hover:text-primary"}`}
+            >
+              <div
+                class={`h-5 rounded- full blur w-full absolute bottom-0 left-[50%] -translate-x-1/2 bg-linear-to-r from-transparent via-secondary to-transparent ${currentPath === item.path ? "opacity-15" : "opacity-0"} transition-opacity duration-300`}
+              />
+              <div
+                class={`h-[0.6px] w-full absolute bottom-0 left-0 bg-linear-to-r from-transparent via-primary to-transparent ${currentPath === item.path ? "opacity-100" : "opacity-0"} transition-opacity duration-300`}
+              />
+
+              {item.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</div>
+
+<script>
+  const nav = document.querySelector("nav");
+  const navItems = document.querySelectorAll("nav ul li a");
+
+  navItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      nav?.classList.add("opacity-0");
+      setTimeout(() => {
+        nav?.classList.remove("opacity-0");
+      }, 300);
+    });
+  });
+</script>
