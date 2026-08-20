@@ -8,7 +8,7 @@ export default function GithubGrid({ username }) {
       <div class="flex flex-col justify-center items-start text-center ms-5 md:ms-0">
         <h1 class="text-lg mb-4 md:mb-6 tracking-[0.12rem]">[ GitHub Activity ]</h1>
       </div>
-      <div className=" w-full md:w-full mt-6 md:mt-10 flex flex-col md:flex-row justify-center items-center">
+      <div className="relative  w-full grayscale-100  md:w-full mt-6 md:mt-10 flex flex-col md:flex-row justify-center items-center">
         <GitHubCalendar
           username={username}
           colorScheme="dark"
