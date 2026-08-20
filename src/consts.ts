@@ -21,13 +21,13 @@ export interface Socials {
 }
 
 export const SOCIALS: Socials[] = [
-  { id: "github", name: "GitHub", url: "https://github.com/camilo-lehue" },
+  { id: "github", name: "GitHub", url: "https://github.com/CamiloLehue" },
   {
     id: "linkedin",
     name: "LinkedIn",
-    url: "https://www.linkedin.com/in/camilo-lehue",
+    url: "https://cl.linkedin.com/in/camilo-lehue-igor-1b7712234",
   },
-  { id: "X", name: "X", url: "https://x.com/camilo_lehue" },
+  { id: "Gmail", name: "camilolehue1995@gmail.com", url: "https://mail.google.com/mail/u/0/#inbox" },
 ] as const;
 
 export interface Section {
@@ -48,8 +48,9 @@ export interface Navigation {
 }
 export const NAVIGATION = [
   { id: "inicio", path: "/", name: "Inicio" },
-  { id: "proyectos", path: "#projects", name: "Proyectos" },
   { id: "works", path: "#works", name: "Works" },
+  { id: "proyectos", path: "#projects", name: "Proyectos" },
+  { id: "activity", path: "#activity", name: "Actividad" },
   { id: "contacto", path: "#contact", name: "Contacto" },
 ] as const;
 
