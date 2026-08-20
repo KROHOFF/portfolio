@@ -3,7 +3,7 @@ import Title from "./Title.astro";
 import { WORKS } from "../consts";
 ---
 
-<section class="w-full p-10" id="works">
+<section class="w-full p-5 md:p-10" id="works">
   <div class="max-w-7xl mx-auto">
     <Title title="Works" />
   </div>
@@ -11,29 +11,29 @@ import { WORKS } from "../consts";
     {
       WORKS.map((work) => (
         <article class="work-item border-b border-card p-2 space-y-2 hover:border-accent w-full transition-all duration-200">
-          <div class="flex justify-between items-start w-full">
-            <span class="font-semibold">{work.name}</span>{" "}
-            <span class="text-xs text-secondary"> {work.timerMessage}</span>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start w-full gap-1">
+            <span class="font-semibold text-sm md:text-base">{work.name}</span>{" "}
+            <span class="text-[10px] md:text-xs text-secondary"> {work.timerMessage}</span>
           </div>
           <div class="ps-2">
-            <span class="text-sm font-mono">{work.description}</span>
+            <span class="text-xs md:text-sm font-mono">{work.description}</span>
           </div>
-          <div class="flex items-center justify-start gap-5">
+          <div class="flex items-center justify-start gap-3 md:gap-5 flex-wrap">
             {work.projects.map((p) => (
               <div
                 class="project-item text-secondary border-b px-2 cursor-pointer transition-all duration-200 hover:border-primary hover:text-white"
                 data-project-techs={JSON.stringify(p.technologies)}
               >
-                <span class="text-xs">{p.name}</span>
+                <span class="text-[10px] md:text-xs">{p.name}</span>
               </div>
             ))}
           </div>
-          <div class="flex flex-wrap gap-2 work-techs">
+          <div class="flex flex-wrap gap-1 md:gap-2 work-techs">
             {Array.from(
               new Set(work.projects.flatMap((p) => p.technologies)),
             ).map((tech) => (
               <div
-                class="text-secondary/30 px-2 py-1 text-xs cursor-pointer transition-all duration-500"
+                class="text-secondary/30 px-1.5 md:px-2 py-0.5 md:py-1 text-[10px] md:text-xs cursor-pointer transition-all duration-500"
                 data-tech={tech}
               >
                 {tech}

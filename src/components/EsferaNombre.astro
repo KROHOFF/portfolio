@@ -39,7 +39,7 @@ const { texto, animar = true } = Astro.props;
     height: auto;
   }
   .text-style {
-    font-size: 30px;
-    letter-spacing: 23px;
+    font-size: clamp(20px, 5vw, 30px);
+    letter-spacing: clamp(15px, 5vw, 23px);
   }
 </style>
