@@ -10,7 +10,7 @@ import Title from "./Title.astro";
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 mt-5">
     {
       PROJECTS.map((project, i) => (
-        <article class="relative border border-card hover:border-accent overflow-hidden grayscale-100 hover:grayscale-0 transition-all duration-500 cursor-pointer">
+        <article class="animate-slide-in-right relative border border-card hover:border-accent overflow-hidden grayscale-100 hover:grayscale-0 transition-all duration-500 cursor-pointer">
           <div class=" inset-0 w-full h-full ">
             {project.srcImg && (
               <div class="flex justify-center items-center w-full h-full">

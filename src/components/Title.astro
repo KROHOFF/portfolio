@@ -7,7 +7,7 @@ export interface Props {
 const { title, subtitle } = Astro.props;
 ---
 
-<div class="flex flex-col justify-center items-start text-center">
+<div class="animate-slide-in-left flex flex-col justify-center items-start text-center">
   <h1 class="text-lg mb-4 tracking-[0.12rem]">[ {title} ]</h1>
   {subtitle && <p class="text-lg text-gray-600">{subtitle}</p>}
 </div>
