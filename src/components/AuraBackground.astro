@@ -1,0 +1,293 @@
+---
+// Aura Background - con selector de tema ("Aurora Beams" / "Chrome Inferno" / "Constellation")
+// Las capas usan mix-blend-mode y componen contra el fondo del body (#100e0b).
+// Este contenedor NO debe tener background-color propio.
+---
+
+<div class="aura-bg" data-aura="aurora">
+  <div class="aura-layer aura-layer-1" aria-hidden="true"></div>
+  <div class="aura-layer aura-layer-2" aria-hidden="true"></div>
+  <div class="aura-layer aura-layer-3" aria-hidden="true"></div>
+  <div class="aura-grain" aria-hidden="true">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="4" stitchTiles="stitch" />
+        <feColorMatrix
+          type="matrix"
+          values="0.181 0.608 0.061 0 0.075 0.181 0.608 0.061 0 0.075 0.181 0.608 0.061 0 0.075 0 0 0 1 0"
+        />
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grain)" />
+    </svg>
+  </div>
+</div>
+
+<button
+  id="aura-toggle"
+  type="button"
+  aria-label="Cambiar colores del fondo"
+  title="Cambiar colores del fondo"
+>
+  <span class="swatch swatch-aurora"></span>
+  <span class="swatch swatch-inferno"></span>
+  <span class="swatch swatch-constellation"></span>
+  <span class="swatch swatch-nightfall"></span>
+  <span class="label">Cambiar fondo</span>
+</button>
+
+<style>
+  .aura-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .aura-layer {
+    position: absolute;
+    inset: 0;
+    transform: translateZ(0);
+    will-change: transform;
+    pointer-events: none;
+  }
+
+  /* Film-grain overlay - SVG feTurbulence noise */
+  .aura-grain {
+    position: absolute;
+    inset: 0;
+    mix-blend-mode: overlay;
+    opacity: 0.85;
+    pointer-events: none;
+  }
+  /* Constellation no lleva grano según su spec */
+  [data-aura="constellation"] .aura-grain {
+    display: none;
+  }
+
+  /* ===== Tema: Aurora Beams ===== */
+  [data-aura="aurora"] .aura-layer-1 {
+    background: radial-gradient(
+      55.8% 55.49% at 50% 100%,
+      rgb(38, 77, 76) 0%,
+      rgba(25, 48, 47, 0) 100%
+    );
+    mix-blend-mode: screen;
+  }
+  [data-aura="aurora"] .aura-layer-2 {
+    background:
+      repeating-linear-gradient(
+        100deg,
+        #262626 0%,
+        #262626 3%,
+        rgba(38, 38, 38, 0.7) 5%,
+        rgba(38, 38, 38, 0.7) 7%,
+        transparent 10%,
+        transparent 12%,
+        rgba(38, 38, 38, 0.7) 14%,
+        #262626 16%
+      ),
+      repeating-linear-gradient(
+        100deg,
+        #9ca3af 0%,
+        #9ca3af 1.5%,
+        rgba(156, 163, 175, 0.8) 2%,
+        #6b7280 3%,
+        #6b7280 4%,
+        rgba(156, 163, 175, 0.8) 4.5%,
+        #9ca3af 5%
+      );
+    background-size: 300% 200%;
+    mix-blend-mode: screen;
+    filter: blur(75px);
+    opacity: 0.9;
+  }
+  @media (min-width: 768px) {
+    [data-aura="aurora"] .aura-layer-2 {
+      filter: blur(108px);
+    }
+  }
+  [data-aura="aurora"] .aura-layer-3 {
+    background: radial-gradient(ellipse at 100% 100%, #ffffff 20%, #0a0a0a 80%);
+    mix-blend-mode: multiply;
+  }
+
+  /* ===== Tema: Chrome Inferno ===== */
+  [data-aura="inferno"] .aura-layer-1 {
+    background: radial-gradient(
+      55.8% 55.49% at 50% 100%,
+      rgb(120, 30, 10) 0%,
+      rgba(80, 15, 5, 0) 100%
+    );
+    mix-blend-mode: screen;
+  }
+  [data-aura="inferno"] .aura-layer-2 {
+    background:
+      repeating-linear-gradient(
+        100deg,
+        #331100 0%,
+        #331100 3%,
+        rgba(80, 30, 10, 0.7) 5%,
+        rgba(80, 30, 10, 0.7) 7%,
+        transparent 10%,
+        transparent 12%,
+        rgba(80, 30, 10, 0.7) 14%,
+        #331100 16%
+      ),
+      repeating-linear-gradient(
+        100deg,
+        #ff6b00 0%,
+        #ff6b00 1.5%,
+        rgba(255, 107, 0, 0.8) 2%,
+        #b91c1c 3%,
+        #b91c1c 4%,
+        rgba(255, 107, 0, 0.8) 4.5%,
+        #ff6b00 5%
+      );
+    background-size: 300% 200%;
+    mix-blend-mode: screen;
+    filter: blur(75px);
+    opacity: 0.9;
+  }
+  @media (min-width: 768px) {
+    [data-aura="inferno"] .aura-layer-2 {
+      filter: blur(108px);
+    }
+  }
+  [data-aura="inferno"] .aura-layer-3 {
+    background: radial-gradient(ellipse at 100% 100%, #ffffff 20%, #0a0000 80%);
+    mix-blend-mode: multiply;
+  }
+
+  /* ===== Tema: Constellation ===== */
+  [data-aura="constellation"] .aura-layer-1 {
+    background:
+      linear-gradient(28deg, transparent 48%, rgba(129, 140, 248, 0.08) 49%, transparent 50%),
+      linear-gradient(142deg, transparent 48%, rgba(96, 165, 250, 0.08) 49%, transparent 50%);
+    background-size: 90px 90px;
+    mix-blend-mode: normal;
+    opacity: 0.8;
+  }
+  [data-aura="constellation"] .aura-layer-2 {
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.85) 1px, transparent 3px),
+      radial-gradient(circle at 65% 22%, rgba(191, 219, 254, 0.8) 1.5px, transparent 4px),
+      radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.75) 1px, transparent 3px),
+      radial-gradient(circle at 35% 78%, rgba(165, 180, 252, 0.8) 1.5px, transparent 4px);
+    mix-blend-mode: screen;
+  }
+  [data-aura="constellation"] .aura-layer-3 {
+    background: radial-gradient(
+      ellipse 55% 50% at 50% 50%,
+      rgba(99, 102, 241, 0.22) 0%,
+      transparent 75%
+    );
+    mix-blend-mode: screen;
+    filter: blur(175px);
+  }
+  @media (min-width: 768px) {
+    [data-aura="constellation"] .aura-layer-3 {
+      filter: blur(252px);
+    }
+  }
+
+  /* ===== Tema: Nightfall ===== */
+  [data-aura="nightfall"] .aura-layer-1 {
+    background: radial-gradient(
+      85% 55% at 52% 0%,
+      rgba(35, 70, 105, 0.34) 0%,
+      rgba(24, 49, 74, 0.18) 38%,
+      transparent 76%
+    );
+    mix-blend-mode: screen;
+    filter: blur(25px);
+  }
+  [data-aura="nightfall"] .aura-layer-2 {
+    background: linear-gradient(
+      180deg,
+      rgba(54, 88, 120, 0.16) 0%,
+      transparent 45%,
+      rgba(0, 0, 0, 0.18) 100%
+    );
+    mix-blend-mode: soft-light;
+    filter: blur(25px);
+    opacity: 0.9;
+  }
+  [data-aura="nightfall"] .aura-layer-3 {
+    background: radial-gradient(42% 35% at 78% 16%, rgba(96, 130, 155, 0.16) 0%, transparent 78%);
+    mix-blend-mode: screen;
+    filter: blur(25px);
+  }
+  @media (min-width: 768px) {
+    [data-aura="nightfall"] .aura-layer-1,
+    [data-aura="nightfall"] .aura-layer-2,
+    [data-aura="nightfall"] .aura-layer-3 {
+      filter: blur(36px);
+    }
+  }
+
+  /* ===== Botón de cambio de tema ===== */
+  #aura-toggle {
+    position: fixed;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.126);
+    background: rgba(16, 14, 11, 0.85);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition:
+      transform 0.15s ease,
+      border-color 0.15s ease;
+  }
+  #aura-toggle:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.283);
+  }
+  .label {
+    line-height: 1;
+  }
+  .swatch {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 9999px;
+    display: block;
+  }
+  .swatch-aurora {
+    background: linear-gradient(135deg, rgb(38, 77, 76), #9ca3af);
+  }
+  .swatch-inferno {
+    background: linear-gradient(135deg, #ff6b00, #b91c1c);
+  }
+  .swatch-constellation {
+    background: linear-gradient(135deg, #6366f1, #60a5fa);
+  }
+  .swatch-nightfall {
+    background: linear-gradient(135deg, rgb(35, 70, 105), rgb(96, 130, 155));
+  }
+</style>
+
+<script>
+  const STORAGE_KEY = "aura-theme";
+  const THEMES = ["aurora", "inferno", "constellation", "nightfall"];
+  const bg = document.querySelector<HTMLElement>(".aura-bg");
+  const btn = document.getElementById("aura-toggle");
+
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (bg && saved && THEMES.includes(saved)) bg.dataset.aura = saved;
+
+  btn?.addEventListener("click", () => {
+    if (!bg) return;
+    const current = THEMES.indexOf(bg.dataset.aura ?? "aurora");
+    const next = THEMES[(current + 1) % THEMES.length];
+    bg.dataset.aura = next;
+    localStorage.setItem(STORAGE_KEY, next);
+  });
+</script>

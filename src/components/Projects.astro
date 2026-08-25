@@ -7,7 +7,9 @@ import Title from "./Title.astro";
   <div class="max-w-7xl mx-auto">
     <Title title="Projects" />
   </div>
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 mt-5">
+  <div
+    class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 mt-5"
+  >
     {
       PROJECTS.map((project, i) => (
         <article class="animate-slide-in-right relative border border-card hover:border-accent overflow-hidden grayscale-100 hover:grayscale-0 transition-all duration-500 cursor-pointer">

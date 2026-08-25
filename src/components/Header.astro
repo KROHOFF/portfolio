@@ -5,19 +5,23 @@ const currentPath = Astro.url.pathname;
 ---
 
 <div class="relative flex justify-center items-center">
-  <div class="animate-pulsing hidden md:block absolute left-[10%] top-[50%] -translate-y-1/2">
-    <span class=" font-bold text-secondary tracking-[0.25rem]">
+  <div
+    class="animate-pulsing hidden md:block absolute left-[10%] top-[50%] -translate-y-1/2"
+  >
+    <span class="font-bold text-secondary tracking-[0.25rem]">
       <span class="text-primary">C</span>LEHUE
     </span>
   </div>
-  <nav class=" sticky top-0 w-full md:w-auto">
-    <ul class="flex justify-start md:justify-center items-center h-14 text-xs overflow-x-auto scrollbar-none px-4 md:px-0 gap-2 md:gap-0">
+  <nav class="sticky top-0 w-full md:w-auto">
+    <ul
+      class="flex justify-start md:justify-center items-center h-14 text-xs overflow-x-auto scrollbar-none px-4 md:px-0 gap-2 md:gap-0"
+    >
       {
         NAVIGATION.map((item) => (
           <li class="relative py-3 shrink-0 animate-slide-in-top animate-delay-150">
             <a
               href={item.path === currentPath ? "" : item.path}
-              class={`relative py-4.5 tracking-widest px-5 md:px-10 ${currentPath === item.path ? "text-primary bg-background border-r border-secondary/5 " : "border-transparent text-secondary hover:text-primary"}`}
+              class={`relative py-4.5 tracking-widest px-5 md:px-10 ${currentPath === item.path ? "text-primary  border-r border-secondary/5 " : "border-transparent text-secondary hover:text-primary"}`}
             >
               <div
                 class={`h-5 rounded- full blur w-full absolute bottom-0 left-[50%] -translate-x-1/2 bg-linear-to-r from-transparent via-secondary to-transparent ${currentPath === item.path ? "opacity-15" : "opacity-0"} transition-opacity duration-300`}

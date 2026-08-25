@@ -8,6 +8,7 @@ import Layout from "@/layouts/Layout.astro";
 import Works from "@/components/Works.astro";
 import Contact from "@/components/Contact.astro";
 import GithubGrid from "@/components/GithubActivity";
+import AuraBackground from "@/components/AuraBackground.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -15,13 +16,18 @@ import GithubGrid from "@/components/GithubActivity";
 
 <Layout>
   <Loading />
-  <main class="bg-background w-full">
-    <Header />
-    <Hero />
-    <Works />
-    <GithubGrid client:only="react" username="CamiloLehue" />
-    <Projects />
-    <Contact />
-    <Footer />
+  
+  <main class="relative w-full" style="background-color: transparent;">
+    <AuraBackground />
+
+    <div class="relative z-1">
+      <Header />
+      <Hero />
+      <Works />
+      <GithubGrid client:only="react" username="CamiloLehue" />
+      <Projects />
+      <Contact />
+      <Footer />
+    </div>
   </main>
 </Layout>
