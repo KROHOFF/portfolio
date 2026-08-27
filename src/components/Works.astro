@@ -1,6 +1,7 @@
 ---
 import Title from "./Title.astro";
 import { WORKS } from "../consts";
+import SvgTechnology from "./SvgTechnology.astro";
 ---
 
 <section class="w-full p-5 md:p-10" id="works">
@@ -10,10 +11,13 @@ import { WORKS } from "../consts";
   <div class="max-w-7xl mx-auto flex flex-col gap-1">
     {
       WORKS.map((work) => (
-        <article class="animate-fade-in-up work-item border-b border-card p-2 space-y-2 hover:border-accent w-full transition-all duration-200">
+        <article class="work-item border-b border-card p-2 space-y-2 hover:border-accent w-full transition-all duration-200">
           <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start w-full gap-1">
             <span class="font-semibold text-sm md:text-base">{work.name}</span>{" "}
-            <span class="text-[10px] md:text-xs text-secondary"> {work.timerMessage}</span>
+            <span class="text-[10px] md:text-xs text-secondary">
+              {" "}
+              {work.timerMessage}
+            </span>
           </div>
           <div class="ps-2">
             <span class="text-xs md:text-sm font-mono">{work.description}</span>
@@ -33,9 +37,10 @@ import { WORKS } from "../consts";
               new Set(work.projects.flatMap((p) => p.technologies)),
             ).map((tech) => (
               <div
-                class="text-secondary/30 px-1.5 md:px-2 py-0.5 md:py-1 text-[10px] md:text-xs cursor-pointer transition-all duration-500"
+                class="text-secondary/30 px-1.5 md:px-2 py-0.5 md:py-1 text-xs md:text-xs cursor-pointer transition-all duration-500 flex items-center justify-center gap-1"
                 data-tech={tech}
               >
+                <SvgTechnology tech={tech} size={20} />
                 {tech}
               </div>
             ))}
@@ -54,12 +59,12 @@ import { WORKS } from "../consts";
     function setWorksOpacity(activeWork) {
       works.forEach((w) => {
         if (!activeWork) {
-          w.classList.remove("opacity-100", "opacity-50");
+          w.classList.remove("opacity-100", "opacity-50", "scale-95");
         } else if (w === activeWork) {
           w.classList.add("opacity-100");
           w.classList.remove("opacity-50");
         } else {
-          w.classList.add("opacity-50");
+          w.classList.add("opacity-50", "scale-95");
           w.classList.remove("opacity-100");
         }
       });

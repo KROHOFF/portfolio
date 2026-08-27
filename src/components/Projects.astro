@@ -8,12 +8,12 @@ import Title from "./Title.astro";
     <Title title="Projects" />
   </div>
   <div
-    class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 mt-5"
+    class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-1 gap-3 md:gap-5 mt-5"
   >
     {
       PROJECTS.map((project, i) => (
-        <article class="animate-slide-in-right relative border border-card hover:border-accent overflow-hidden grayscale-100 hover:grayscale-0 transition-all duration-500 cursor-pointer">
-          <div class=" inset-0 w-full h-full ">
+        <article class="animate-slide-in-right rounded-2xl hover:shadow relative overflow-hidden grayscale-100 hover:grayscale-0 transition-all duration-500 cursor-pointer">
+          <div class="relative inset-0 w-full h-full ">
             {project.srcImg && (
               <div class="flex justify-center items-center w-full h-full">
                 <img
@@ -23,8 +23,10 @@ import Title from "./Title.astro";
                 />
               </div>
             )}
-            <div class="absolute left-0 bottom-0 flex flex-col gap-2">
-              <span class="font-semibold">{project.name}</span>
+            <div class="absolute flex justify-center items-center left-0 bottom-0 h-40 bg-linear-to-t from-background  w-full">
+              <div class="relative bg-background px-5 rounded-full py-0.5 border-t border-t-foreground/20 shadow  ">
+                <span class="font-semibold text-xs tracking-[0.2rem]">{project.name}</span>
+              </div>
             </div>
           </div>
         </article>

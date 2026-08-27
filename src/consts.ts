@@ -27,7 +27,11 @@ export const SOCIALS: Socials[] = [
     name: "LinkedIn",
     url: "https://cl.linkedin.com/in/camilo-lehue-igor-1b7712234",
   },
-  { id: "Gmail", name: "camilolehue1995@gmail.com", url: "https://mail.google.com/mail/u/0/#inbox" },
+  {
+    id: "Gmail",
+    name: "camilolehue1995@gmail.com",
+    url: "https://mail.google.com/mail/u/0/#inbox",
+  },
 ] as const;
 
 export interface Section {
@@ -199,4 +203,4 @@ export const PROJECTS = [
     name: "AST Website",
     srcImg: "/projects/ast.png",
   },
-]
+];
