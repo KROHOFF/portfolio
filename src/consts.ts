@@ -51,18 +51,18 @@ export interface Navigation {
   name: string;
 }
 export const NAVIGATION = [
-  { id: "inicio", path: "/", name: "Inicio" },
+  { id: "home", path: "/", name: "Home" },
   { id: "works", path: "#works", name: "Works" },
-  { id: "proyectos", path: "#projects", name: "Proyectos" },
-  { id: "activity", path: "#activity", name: "Actividad" },
-  { id: "contacto", path: "#contact", name: "Contacto" },
+  { id: "activity", path: "#activity", name: "Activity" },
+  { id: "projects", path: "#projects", name: "Projects" },
+  { id: "services", path: "#services", name: "Services" },
 ] as const;
 
 export const WORKS = [
   {
     name: "AST Networks Technology",
     description:
-      "Investigación e innovación, desarrollo fullstack de sistemas complejos con arquitecturas escalables desde cero, con tecnologías modernas, utilizando e integrando hardware como radares, sensores, cámaras PTZ, entre otros, unificados en sistemas de monitoreo para diferentes empresas nacionales e internacionales.",
+      "Arquitectura y desarrollo Full Stack en múltiples proyectos de investigación y desarrollo desde cero, integrando hardware especializado (radares, sensores y cámaras PTZ) en diferentes softwares de monitoreo (Seguimientos, detección, seguridad, prevención) para diversos clientes nacionales e internacionales.",
     url: "https://ast.cl",
     position: "Full Stack Developer",
     timerMessage: "Enero 2025 - Presente",
@@ -111,7 +111,7 @@ export const WORKS = [
   {
     name: "Sistemas Expertos Ingeniería de Software",
     description:
-      "Desarrollador FullStack como contribuidor de un sistema avanzado, creando módulos hospitalarios nuevos de urgencias, oncología, agenda, farmacia, abastecimiento, informes médicos, entre otros.",
+      "Desarrollador Full Stack especializado en la creación de módulos clave para plataformas de salud, abarcando desde la atención al paciente (Urgencias, Oncología, Agenda) hasta la operativa hospitalaria (Farmacia, Abastecimiento y Reportes).",
     url: "https://www.sistemasexpertos.cl/",
     position: "Full Stack Developer",
     timerMessage: "Agosto 2021 - Enero 2025",

@@ -1,0 +1,81 @@
+---
+import { SOCIALS } from "@/consts";
+import Title from "./Title.astro";
+
+const services = [
+  {
+    title: "Aplicaciones web modernas",
+    description:
+      "Desarrollo de interfaces rápidas, limpias y escalables con React, TypeScript, Astro y stacks modernos para productos que necesitan rendimiento y una excelente experiencia de usuario.",
+  },
+  {
+    title: "Sistemas empresariales",
+    description:
+      "Construcción de plataformas internas, ERPs, dashboards y módulos operativos para procesos hospitalarios, comerciales, logísticos y de gestión en entornos reales y complejos.",
+  },
+  {
+    title: "Backend y APIs",
+    description:
+      "Diseño de APIs robustas, autenticación, lógica de negocio, integración con bases de datos y servicios externos para soportar aplicaciones web y sistemas críticos.",
+  },
+  {
+    title: "Integración con hardware y datos",
+    description:
+      "Conexión de aplicaciones con sensores, radares, cámaras PTZ y otros dispositivos IoT para crear soluciones de monitoreo, trazabilidad y análisis en tiempo real.",
+  },
+  {
+    title: "Dashboards y visualización",
+    description:
+      "Paneles para seguimiento operativo, métricas, alertas y reportes ejecutivos con foco en claridad, decisiones rápidas y UX profesional.",
+  },
+  {
+    title: "Mantenimiento y evolución",
+    description:
+      "Optimización, refactorización y mejora continua de aplicaciones existentes para que sigan funcionando con calidad, seguridad y adopción de nuevas tecnologías.",
+  },
+];
+---
+
+<section id="services" class="w-full p-5 md:p-10">
+  <div class="max-w-7xl mx-auto flex flex-col gap-6">
+    <Title title="Services" />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-5">
+      {
+        services.map((service) => (
+          <article class="group rounded-2xl border border-white/10 bg-foreground/1 backdrop-blur p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-amber-300/60 hover:shadow-[0_0_30px_rgba(255,164,8,0.15)]">
+            <h3 class="mb-3 text-base font-semibold tracking-[0.08rem] text-white">
+              {service.title}
+            </h3>
+            <p class="text-sm leading-6 text-secondary">
+              {service.description}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="py-10">
+      <div
+        class="animate-slide-in-left flex flex-col mb-6 justify-center items-center text-center"
+      >
+        <h1 class="text-lg mb-4 tracking-[0.12rem]">[ Contactame Aquí ]</h1>
+      </div>
+
+      <div class="flex justify-center items-center gap-5">
+        {
+          SOCIALS.map((social) => (
+            <a
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex bg-foreground shadow border border-t-primary py-3 hover:bg-primary rounded-full text-primary-foreground px-10 items-center gap-2 mb-5 hover:text-accent transition-colors duration-300"
+            >
+              <span class="text-sm">{social.name}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
